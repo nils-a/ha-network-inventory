@@ -1,0 +1,85 @@
+{
+  "config": {
+    "abort": { "single_instance_allowed": "Network Inventory is already configured." },
+    "error": {
+      "invalid_range": "Invalid range. Allowed: 192.168.189.0/24, 192.168.188.1-192.168.188.49 or 192.168.188.1-49.",
+      "outside_network": "A range lies outside the network.",
+      "overlap": "Ranges overlap (segments with each other or with the DHCP range)."
+    },
+    "step": {
+      "user": {
+        "title": "Set up Network Inventory",
+        "description": "Enter the network and the router's DHCP range. Optionally create the default segments and their labels; everything can be changed later.",
+        "data": {
+          "network": "Network (CIDR)",
+          "dhcp_range": "DHCP range",
+          "create_default_segments": "Create default segments and labels"
+        }
+      }
+    }
+  },
+  "options": {
+    "abort": { "segment_not_found": "Segment not found." },
+    "error": {
+      "invalid_range": "Invalid range. Allowed: 192.168.189.0/24, 192.168.188.1-192.168.188.49 or 192.168.188.1-49.",
+      "outside_network": "A range lies outside the network.",
+      "overlap": "Ranges overlap (segments with each other or with the DHCP range).",
+      "label_in_use": "This label is already assigned to a segment."
+    },
+    "step": {
+      "init": {
+        "title": "Network Inventory",
+        "menu_options": {
+          "add_segment": "Add segment",
+          "edit_segment": "Change or delete segment",
+          "general": "Network, DHCP range and sources"
+        }
+      },
+      "general": {
+        "title": "General",
+        "data": {
+          "network": "Network (CIDR)",
+          "dhcp_range": "DHCP range (empty = none)",
+          "tracker_platforms": "Tracker integrations"
+        },
+        "data_description": {
+          "dhcp_range": "Devices with an IP in this range count as 'no fixed IP yet'.",
+          "tracker_platforms": "Integrations providing the device trackers (default: fritz)."
+        }
+      },
+      "add_segment": {
+        "title": "Add segment",
+        "description": "A label becomes the tag; devices with this label must have an IP from the range.",
+        "data": { "label_id": "Tag (label)", "range": "IP range" }
+      },
+      "edit_segment": {
+        "title": "Choose segment",
+        "data": { "segment": "Segment" }
+      },
+      "edit_segment_details": {
+        "title": "Segment {label}",
+        "data": { "range": "IP range", "delete": "Delete segment (the label is kept)" }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "network_status": {
+        "name": "Network status",
+        "state": {
+          "ok": "OK",
+          "dhcp": "In DHCP range",
+          "no_label": "No tag",
+          "ambiguous": "Multiple tags",
+          "wrong_segment": "Wrong segment",
+          "outside": "Outside all segments",
+          "unknown": "Unknown"
+        }
+      },
+      "problems": { "name": "Problems" }
+    },
+    "text": {
+      "remark": { "name": "Remark" }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "domain": "ha_network_inventory",
+  "name": "Network Inventory",
+  "after_dependencies": ["fritz"],
+  "codeowners": ["@nils-a"],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/nils-a/ha-network-inventory",
+  "integration_type": "service",
+  "iot_class": "calculated",
+  "issue_tracker": "https://github.com/nils-a/ha-network-inventory/issues",
+  "requirements": [],
+  "single_config_entry": true,
+  "version": "0.1.0"
+}

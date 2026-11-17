@@ -1,0 +1,22 @@
+{
+  "entity": {
+    "sensor": {
+      "network_status": {
+        "default": "mdi:lan",
+        "state": {
+          "ok": "mdi:lan-check",
+          "dhcp": "mdi:lan-pending",
+          "no_label": "mdi:help-network-outline",
+          "ambiguous": "mdi:tag-multiple",
+          "wrong_segment": "mdi:lan-disconnect",
+          "outside": "mdi:alert-segment-outline",
+          "unknown": "mdi:help-segment-outline"
+        }
+      },
+      "problems": { "default": "mdi:alert-network-outline" }
+    },
+    "text": {
+      "remark": { "default": "mdi:note-text-outline" }
+    }
+  }
+}

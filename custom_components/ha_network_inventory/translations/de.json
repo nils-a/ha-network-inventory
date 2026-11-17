@@ -1,0 +1,85 @@
+{
+  "config": {
+    "abort": { "single_instance_allowed": "Netzwerk-Inventar ist bereits eingerichtet." },
+    "error": {
+      "invalid_range": "Ungültiger Bereich. Erlaubt: 192.168.189.0/24, 192.168.188.1-192.168.188.49 oder 192.168.188.1-49.",
+      "outside_network": "Ein Bereich liegt außerhalb des Netzes.",
+      "overlap": "Bereiche überschneiden sich (Kreise untereinander oder mit dem DHCP-Bereich)."
+    },
+    "step": {
+      "user": {
+        "title": "Netzwerk-Inventar einrichten",
+        "description": "Netz und DHCP-Bereich der Fritz!Box angeben. Optional werden die Standard-Kreise samt Labels angelegt (Infrastructure .1–.49, Clients .50–.199, IoT 189.x, Wireless/Mesh 190.x); alles ist später änderbar.",
+        "data": {
+          "network": "Netz (CIDR)",
+          "dhcp_range": "DHCP-Bereich",
+          "create_default_segments": "Standard-Kreise und Labels anlegen"
+        }
+      }
+    }
+  },
+  "options": {
+    "abort": { "segment_not_found": "Kreis nicht gefunden." },
+    "error": {
+      "invalid_range": "Ungültiger Bereich. Erlaubt: 192.168.189.0/24, 192.168.188.1-192.168.188.49 oder 192.168.188.1-49.",
+      "outside_network": "Ein Bereich liegt außerhalb des Netzes.",
+      "overlap": "Bereiche überschneiden sich (Kreise untereinander oder mit dem DHCP-Bereich).",
+      "label_in_use": "Dieses Label ist bereits einem Kreis zugeordnet."
+    },
+    "step": {
+      "init": {
+        "title": "Netzwerk-Inventar",
+        "menu_options": {
+          "add_segment": "Kreis hinzufügen",
+          "edit_segment": "Kreis ändern oder löschen",
+          "general": "Netz, DHCP-Bereich und Quellen"
+        }
+      },
+      "general": {
+        "title": "Allgemein",
+        "data": {
+          "network": "Netz (CIDR)",
+          "dhcp_range": "DHCP-Bereich (leer = keiner)",
+          "tracker_platforms": "Tracker-Integrationen"
+        },
+        "data_description": {
+          "dhcp_range": "Geräte mit einer IP in diesem Bereich gelten als 'noch keine feste IP'.",
+          "tracker_platforms": "Aus welchen Integrationen die Geräte-Tracker kommen (Standard: fritz)."
+        }
+      },
+      "add_segment": {
+        "title": "Kreis hinzufügen",
+        "description": "Ein Label wird zur Kennung; Geräte mit diesem Label müssen eine IP aus dem Bereich haben.",
+        "data": { "label_id": "Kennung (Label)", "range": "IP-Bereich" }
+      },
+      "edit_segment": {
+        "title": "Kreis wählen",
+        "data": { "segment": "Kreis" }
+      },
+      "edit_segment_details": {
+        "title": "Kreis {label}",
+        "data": { "range": "IP-Bereich", "delete": "Kreis löschen (das Label bleibt bestehen)" }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "network_status": {
+        "name": "Netzstatus",
+        "state": {
+          "ok": "OK",
+          "dhcp": "Im DHCP-Bereich",
+          "no_label": "Ohne Kennung",
+          "ambiguous": "Mehrere Kennungen",
+          "wrong_segment": "Falscher Kreis",
+          "outside": "Außerhalb aller Kreise",
+          "unknown": "Unbekannt"
+        }
+      },
+      "problems": { "name": "Probleme" }
+    },
+    "text": {
+      "remark": { "name": "Bemerkung" }
+    }
+  }
+}
